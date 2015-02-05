@@ -2,8 +2,13 @@ sshdo.py
 
 khrpcek@gmail.com
 
-This is a small script for doing mass SSH operations on servers. There are currently three 
-components to it, sshdo, put, and get. The servers are located in files in the lists subdirectory. If you enter a list name when it prompts for servers it will use all hosts listed in that file. The files should be 1 host per line. You can also maually type in the hosts at the Servers prompt (space delimited).
+This is a small script for doing mass SSH operations on servers. There are currently three components to it, sshdo, put, and get. The servers are located in files in the lists subdirectory. If you enter a list name when it prompts for servers it will use all hosts listed in that file. The files should be 1 host per line. You can also maually type in the hosts at the Servers prompt (space delimited).
+
+Dependencies:
+Paramiko
+ansicolors
+
+Use pip to install these or do it manually.
 
 sshdo
 Usage: ./sshdo.py
