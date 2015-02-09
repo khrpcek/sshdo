@@ -2,8 +2,10 @@
 import os
 import paramiko
 from colors import red, green
+import time
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+datetime = time.strftime("%m%d%Y-%H%M")
 #sftp = paramiko.SFTPClient()
 #sftp.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
@@ -27,7 +29,7 @@ def agent_auth(transport, username):
             print('... nope.')
 
 def explode_list(list_name):
-    file_name = 'lists/' + list_name + '.txt'
+    file_name = 'lists/' + list_name
     servers_file = open(file_name, 'r')
     servers_list = servers_file.readlines()
     servers_list_stripped = [line.rstrip() for line in servers_list]
@@ -47,6 +49,7 @@ def sshdo_questions():
 def sshdo():
     servers = raw_input('Servers: ')
     command = raw_input('Command: ')
+    if not os.path.exists('logs'+datetime): os.makedirs('logs/'+datetime)
 
     if len(servers.split()) > 1:
         list = servers.split()
@@ -58,11 +61,15 @@ def sshdo():
         except Exception:
             print red(host + "\n Could not connect \n")
         else:
+            log_f = open('logs/'+datetime+'/'+host+'.log', 'w')
+            log_f.write(command+"/n/n")
+            paramiko.util.log_to_file('logs/test.log')
             print green("\n" + host + "\n")
             stdin, stdout, stderr = ssh.exec_command(command)
-#        print [line.rstrip() for line in stdout.readlines()]
             for data_line in stdout:
                 print data_line.rstrip()
+                log_f.write(data_line)
+            log_f.close()
             ssh.close()
     return 
 
@@ -118,4 +125,5 @@ def sshget():
             sftp.get(remote_file,local_file)
             ssh.close()
     return "sshget"
+
 
