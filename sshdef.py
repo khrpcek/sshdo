@@ -5,7 +5,7 @@ from colors import red, green
 import time
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-datetime = time.strftime("%m%d%Y-%H%M")
+datetime = time.strftime("%m%d%Y-%H%M%S")
 #sftp = paramiko.SFTPClient()
 #sftp.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
