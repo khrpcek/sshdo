@@ -39,14 +39,14 @@ SFTPs the given file from each server to the given location on the host you are 
 
 ###Changelog
 * 1/18/2016
-** Cleaned up code. Reduced all code to 1 file. 
-** Removed base64 module
-** It now requires shutil, argparse, and tarfile modules
-** Fixed Logging
-** Added log compression. It tar/gzips the log folders older than 4 operations. You can change this value by setting the untar variable in the script.
-** Prints list at end of script for failed hosts
-** Prints log directory for current operation at end of script
-** Now uses full paths for files so that you can execute sshdo from outside it's own directory
+ * Cleaned up code. Reduced all code to 1 file. 
+ * Removed base64 module
+ * It now requires shutil, argparse, and tarfile modules
+ * Fixed Logging
+ * Added log compression. It tar/gzips the log folders older than 4 operations. You can change this value by setting the untar variable in the script.
+ * Prints list at end of script for failed hosts
+ * Prints log directory for current operation at end of script
+ * Now uses full paths for files so that you can execute sshdo from outside it's own directory
 
 
 ###TODO
